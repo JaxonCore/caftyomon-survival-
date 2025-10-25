@@ -6,174 +6,142 @@
 <title>Regras - Craftymon Survival</title>
 
 <style>
-  /* ===== CUSTOM MINECRAFT FONT ===== */
-  @font-face {
-    font-family: 'MinecraftCustom';
-    src: url('Minecraft.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+@font-face {
+  font-family: 'MinecraftCustom';
+  src: url('Minecraft.ttf') format('truetype');
+}
 
-  /* ===== GLOBAL STYLES ===== */
-  body {
-    margin: 0;
-    font-family: 'MinecraftCustom', 'Press Start 2P', cursive;
-    background: linear-gradient(#87ceeb, #6ab04c);
-    color: #fff;
-    text-align: center;
-    overflow-x: hidden;
-  }
+body {
+  margin: 0;
+  font-family: 'MinecraftCustom', 'Press Start 2P', cursive;
+  background: url('https://wallpapercave.com/wp/wp2640545.jpg') center/cover no-repeat fixed;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
 
-  header {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 25px 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+/* HEADER */
+header {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 25px 15px;
+  border-bottom: 2px solid #ff5533;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  h1 {
-    font-size: 20px;
-    color: #ffeb3b;
-    text-shadow: 2px 2px #000;
-    margin-bottom: 8px;
-  }
+h1 {
+  font-size: 22px;
+  color: #ff5533;
+  text-shadow: 2px 2px #000;
+}
 
-  p {
-    font-size: 12px;
-    color: #e0e0e0;
-  }
+/* MENU */
+.menu-btn {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background: none;
+  border: 2px solid #ff5533;
+  color: #ff5533;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.menu-btn:hover {
+  background-color: rgba(255,85,51,0.15);
+}
+.menu-links {
+  display: none;
+  background: rgba(0,0,0,0.9);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding-top: 60px;
+}
+.menu-links.active { display: block; }
+.menu-links a {
+  display: block;
+  color: #ff5533;
+  text-decoration: none;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.menu-links a:hover {
+  background: rgba(255,85,51,0.2);
+}
 
-  /* ===== MENU BUTTON ===== */
-  .menu-btn {
-    background: none;
-    border: 2px solid #fff;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 8px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 10;
-    transition: 0.3s;
-  }
+/* RULES BOX */
+.rules-box {
+  margin: 30px auto;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid #ff5533;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(255,85,51,0.3);
+  transition: transform 0.3s;
+}
+.rules-box:hover {
+  transform: scale(1.02);
+}
+.rules-box h2 {
+  color: #ff5533;
+  text-shadow: 2px 2px #000;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.rules-box ul {
+  list-style: none;
+  padding: 0;
+}
+.rules-box li {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  font-size: 12px;
+}
+.rules-box li::before {
+  content: '⚠️ ';
+  margin-right: 5px;
+}
 
-  .menu-btn:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
+/* TRANSLATE */
+.translate-container {
+  margin-top: 15px;
+}
+select {
+  background: #ff5533;
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-family: 'MinecraftCustom';
+}
 
-  /* ===== MENU LINKS ===== */
-  .menu-links {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0,0,0,0.9);
-    padding-top: 60px;
-    z-index: 5;
-  }
-
-  .menu-links.active {
-    display: block;
-  }
-
-  .menu-links a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: #ffeb3b;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    font-size: 14px;
-    transition: 0.3s;
-  }
-
-  .menu-links a:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-
-  /* ===== RULES BOX ===== */
-  .rules-box {
-    margin: 30px auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 2px solid #fff;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
-    padding: 20px;
-    text-align: left;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .rules-box:hover {
-    transform: scale(1.02);
-  }
-
-  .rules-box h2 {
-    color: #ffeb3b;
-    text-shadow: 2px 2px #000;
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .rules-box ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .rules-box li {
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: rgba(255,255,255,0.2);
-    border-radius: 8px;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-
-  .rules-box li::before {
-    content: '🚨 ';
-    margin-right: 5px;
-  }
-
-  /* ===== TRANSLATE DROPDOWN ===== */
-  .translate-container {
-    margin-top: 15px;
-  }
-
-  select {
-    background-color: #3c8527;
-    color: white;
-    border: 2px solid #fff;
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-family: 'MinecraftCustom', sans-serif;
-    cursor: pointer;
-  }
-
-  footer {
-    margin-top: 40px;
-    font-size: 10px;
-    color: #ccc;
-    padding-bottom: 20px;
-  }
-
+/* FOOTER */
+footer {
+  margin-top: 40px;
+  font-size: 10px;
+  color: #ccc;
+}
 </style>
 </head>
 
 <body>
   <header>
     <button id="menu-btn" class="menu-btn">☰</button>
-
     <nav id="menu-links" class="menu-links">
       <a href="index.html">🏠 Início</a>
-      <a href="#regras">📜 Regras</a>
     </nav>
-
     <h1>📜 Regras do Servidor 📜</h1>
 
     <div class="translate-container">
@@ -185,13 +153,13 @@
     </div>
   </header>
 
-  <section id="regras" class="rules-box">
+  <section class="rules-box">
     <h2>Diretrizes Essenciais</h2>
     <ul>
-      <li>Não pratique spam ou floods (envio repetitivo e excessivo de mensagens).</li>
-      <li>Não utilize qualquer tipo de software ou modificação (hack) que lhe dê vantagem injusta.</li>
-      <li>Respeite os outros jogadores. Evite ofensas, xingamentos ou linguagem de ódio.</li>
-      <li>Siga as regras específicas do servidor Minecraft e do Discord, caso existam.</li>
+      <li>Evite spam e floods no chat (mensagens repetitivas).</li>
+      <li>Não use hacks, exploits ou mods que tragam vantagem injusta.</li>
+      <li>Respeite todos os jogadores. Não ofenda, humilhe ou pratique discurso de ódio.</li>
+      <li>Siga as regras adicionais no Discord e no servidor Minecraft.</li>
     </ul>
   </section>
 
@@ -199,31 +167,26 @@
     <p>© 2025 Craftymon Survival Server | Todos os direitos reservados</p>
   </footer>
 
-  <script>
-    // Menu Toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const menuLinks = document.getElementById('menu-links');
-    menuBtn.addEventListener('click', () => {
-      menuLinks.classList.toggle('active');
-    });
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const menuLinks = document.getElementById('menu-links');
+  menuBtn.addEventListener('click', () => menuLinks.classList.toggle('active'));
 
-    // Google Translate Integration
-    function translatePage(lang) {
-      const googleTranslateScript = document.createElement('script');
-      googleTranslateScript.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-      document.body.appendChild(googleTranslateScript);
+  function translatePage(lang) {
+    const s = document.createElement('script');
+    s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+    document.body.appendChild(s);
+    window.googleTranslateElementInit = function() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'pt',
+        includedLanguages: 'pt,en,es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    };
+  }
+</script>
 
-      window.googleTranslateElementInit = function() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'pt',
-          includedLanguages: 'pt,en,es',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-      };
-    }
-  </script>
-
-  <!-- Hidden container for Google Translate -->
-  <div id="google_translate_element" style="display:none;"></div>
+<div id="google_translate_element" style="display:none;"></div>
 </body>
-</html>
+  </html>
+  
