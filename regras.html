@@ -1,0 +1,148 @@
+<style>
+  /* NOVO CÓDIGO AQUI: Declara a fonte */
+  @font-face {
+    font-family: 'MinecraftCustom'; /* Escolha um nome para sua fonte */
+    src: url('Minecraft.ttf') format('truetype'); /* Aponta para o arquivo que você subiu */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* CÓDIGO EXISTENTE: body { ... */
+  body {
+    margin: 0;
+    font-family: 'MinecraftCustom', 'Press Start 2P', cursive; /* Substitui a fonte */
+    background: linear-gradient(#87ceeb, #6ab04c);
+    color: #fff;
+    text-align: center;
+  }
+  /* O RESTO DO SEU CSS... */
+  
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-size: 18px;
+      color: #ffeb3b;
+      text-shadow: 2px 2px #000;
+    }
+    /* Estilos do Menu Hamburguer (Copie do Index.html) */
+    .menu-btn {
+      background: none;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px 10px;
+      margin: 10px;
+      display: block; 
+      position: absolute; 
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      border-radius: 5px;
+    }
+    .menu-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .menu-links {
+      display: none; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding-top: 60px; 
+      z-index: 5;
+    }
+    .menu-links.active {
+      display: block; 
+    }
+    .menu-links a {
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      color: #ffeb3b;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+    }
+    .menu-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Estilos para a nova seção de Regras */
+    .rules-box {
+      margin: 30px auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid #fff;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      text-align: left;
+    }
+    .rules-box h2 {
+      color: #ffeb3b;
+      text-shadow: 2px 2px #000;
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .rules-box ul {
+        list-style: none; /* Remove bolinhas padrão */
+        padding: 0;
+    }
+    .rules-box li {
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        font-size: 12px;
+    }
+    .rules-box li::before {
+        content: '🚨 '; /* Ícone de alerta antes de cada regra */
+        margin-right: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <button id="menu-btn" class="menu-btn">☰</button>
+    
+    <nav id="menu-links" class="menu-links">
+        <a href="index.html">Início</a>
+    </nav>
+
+    <h1>📜 Regras do Servidor 📜</h1>
+  </header>  
+
+  <section class="rules-box">
+    <h2>Diretrizes Essenciais</h2>
+    <ul>
+        <li>Não pratique spam ou floods (envio repetitivo e excessivo de mensagens).</li>
+        <li>Não utilize qualquer tipo de software ou modificação de jogo (hack) que lhe dê vantagem injusta.</li>
+        <li>Mantenha o respeito! Não humilhe, ofenda ou use linguagem de ódio contra outras pessoas, tanto no Minecraft quanto no Discord.</li>
+        <li>Siga as regras específicas do servidor do Minecraft, se houverem, além destas regras gerais.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Craftymon Survival Server | Todos os direitos reservados</p>
+  </footer>
+  
+  <script>
+    // Script de Menu Hamburguer (Copie do Index.html)
+    const menuBtn = document.getElementById('menu-btn');
+    const menuLinks = document.getElementById('menu-links');
+
+    menuBtn.addEventListener('click', () => {
+      menuLinks.classList.toggle('active');
+    });
+
+    // Removido o script 'copyText' pois não é necessário nesta página de regras.
+  </script>
+</body>
+</html>
