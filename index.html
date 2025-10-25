@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Craftymon Survival Server</title>
+
+<style>
+  /* ====== CUSTOM FONT ====== */
+  @font-face {
+    font-family: 'MinecraftCustom';
+    src: url('Minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* ====== GLOBAL STYLES ====== */
+  body {
+    margin: 0;
+    font-family: 'MinecraftCustom', 'Press Start 2P', cursive;
+    background: linear-gradient(#87ceeb, #6ab04c);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  header {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 25px 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  h1 {
+    font-size: 20px;
+    color: #ffeb3b;
+    text-shadow: 2px 2px #000;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 12px;
+    color: #e0e0e0;
+  }
+
+  /* ====== MENU ====== */
+  #menu-btn {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 18px;
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  #menu-links {
+    display: none;
+    margin-top: 10px;
+  }
+
+  #menu-links a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.5);
+    padding: 8px;
+    border-radius: 6px;
+    margin: 5px;
+    transition: 0.3s;
+  }
+
+  #menu-links a:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  /* ====== BOXES ====== */
+  .ip-box, .top-box, .nova-secao-exemplo {
+    margin: 25px auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .ip-box:hover, .top-box:hover, .nova-secao-exemplo:hover {
+    transform: scale(1.02);
+  }
+
+  h2 {
+    color: #ffeb3b;
+    text-shadow: 2px 2px #000;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .player {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 8px;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .copy-btn {
+    background-color: #3c8527;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
+  }
+
+  .copy-btn:hover {
+    background-color: #2e6820;
+  }
+
+  /* ====== TRANSLATE DROPDOWN ====== */
+  .translate-container {
+    margin-top: 15px;
+  }
+
+  select {
+    background-color: #3c8527;
+    color: white;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-family: 'MinecraftCustom', sans-serif;
+    cursor: pointer;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 10px;
+    color: #ccc;
+    padding-bottom: 20px;
+  }
+
+</style>
+</head>
+
+<body>
+  <header>
+    <button id="menu-btn" class="menu-btn">☰</button>
+    <nav id="menu-links" class="menu-links">
+      <a href="regras.html">📜 Regras</a>
+      <a href="#ip">🎮 IP</a>
+      <a href="#top">🏆 Top Jogadores</a>
+      <a href="#sobre">ℹ️ Sobre</a>
+    </nav>
+
+    <h1>🌿 Craftymon Survival Server 🌿</h1>
+    <p>Capture monstrinhos e batalhe em um mundo survival!</p>
+
+    <div class="translate-container">
+      <select id="languageSelect" onchange="translatePage(this.value)">
+        <option value="pt">Português 🇧🇷</option>
+        <option value="en">English 🇺🇸</option>
+        <option value="es">Español 🇪🇸</option>
+      </select>
+    </div>
+  </header>
+
+  <section id="ip" class="ip-box">
+    <h2>🎮 IP e Porta</h2>
+    <p><b>IP:</b> Craftymon_Survival.aternos.me</p>
+    <p><b>Porta:</b> 38606</p>
+    <button class="copy-btn" onclick="copyText('Craftymon_Survival.aternos.me')">Copiar IP</button>
+    <button class="copy-btn" onclick="window.location.href='minecraft://?addExternalServer=Craftymon_Survival|Craftymon_Survival.aternos.me:38606'">Conectar</button>
+  </section>
+
+  <section id="top" class="top-box">
+    <h2>🏆 TOP 3 Jogadores</h2>
+    <div class="player">🥇 ???</div>
+    <div class="player">🥈 ???</div>
+    <div class="player">🥉 ???</div>
+  </section>
+
+  <section id="sobre" class="nova-secao-exemplo">
+    <h2>📣 Sobre o servidor</h2>
+    <p>Temos addons como o <b>Pokedrock</b> e <b>Essentials</b> (o da bússola 🧭), entre outros!</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Craftymon Survival Server | Todos os direitos reservados</p>
+  </footer>
+
+  <!-- ====== JAVASCRIPT ====== -->
+  <script>
+    // Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const menuLinks = document.getElementById('menu-links');
+    menuBtn.addEventListener('click', () => {
+      menuLinks.style.display = menuLinks.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Copy IP function
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      alert("IP copiado: " + text);
+    }
+
+    // Simple translate using Google Translate
+    function translatePage(lang) {
+      const googleTranslateScript = document.createElement('script');
+      googleTranslateScript.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+      document.body.appendChild(googleTranslateScript);
+      
+      window.googleTranslateElementInit = function() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'pt',
+          includedLanguages: 'pt,en,es',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      };
+    }
+  </script>
+
+  <!-- Hidden translate container -->
+  <div id="google_translate_element" style="display:none;"></div>
+</body>
+</html>
