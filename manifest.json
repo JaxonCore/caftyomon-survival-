@@ -1,0 +1,12 @@
+{
+  "background_color": "#000000",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Craftymon Survival Server",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "C.S.S",
+  "start_url": "/",
+  "theme_color": "#df1e1e",
+  "description": "Entre no server da Craftymon Survival Server"
+}
