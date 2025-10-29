@@ -1,12 +1,16 @@
 {
-  "background_color": "#000000",
+  "background_color": "#ffffff",
   "dir": "ltr",
-  "display": "standalone",
+  "display": "fullscreen",
   "name": "Craftymon Survival Server",
   "orientation": "any",
-  "scope": "/",
+  "scope": "https://jaxoncore.github.io/caftyomon-survival-/",
   "short_name": "C.S.S",
-  "start_url": "/",
-  "theme_color": "#df1e1e",
-  "description": "Entre no server da Craftymon Survival Server"
+  "start_url": "https://jaxoncore.github.io/caftyomon-survival-/",
+  "theme_color": "#ffffff",
+  "description": "Servidor de Minecraft",
+  "lang": "pt",
+  "display_override": [
+    "window-controls-overlay"
+  ]
 }
