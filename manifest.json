@@ -3,14 +3,26 @@
   "dir": "ltr",
   "display": "fullscreen",
   "name": "Craftymon Survival Server",
-  "orientation": "any",
+  "orientation": "portrait",
   "scope": "https://jaxoncore.github.io/caftyomon-survival-/",
   "short_name": "C.S.S",
-  "start_url": "https://jaxoncore.github.io/caftyomon-survival-/",
+  "start_url": "/https://jaxoncore.github.io/caftyomon-survival-/",
   "theme_color": "#ffffff",
-  "description": "Servidor de Minecraft",
+  "id": "C.S.S",
+  "description": "Servidor de Minecraft bedrock com addons",
   "lang": "pt",
   "display_override": [
-    "window-controls-overlay"
+    "window-controls-overlay",
+    "standalone"
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://jaxoncore.github.io/caftyomon-survival-/",
+      "id": "383847838289299373"
+    }
+  ],
+  "categories": [
+    "games"
   ]
 }
