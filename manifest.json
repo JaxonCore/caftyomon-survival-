@@ -9,8 +9,6 @@
   "start_url": "./index.html",
   "theme_color": "#ffffff",
   "id": "C.S.S",
-  
-  /* --- Propriedades que estavam fora --- */
   "description": "Servidor de Minecraft bedrock com addons",
   "lang": "pt",
   "display_override": [
@@ -27,8 +25,6 @@
   "categories": [
     "games"
   ],
-
-  /* --- ADIÇÃO OBRIGATÓRIA --- */
   "icons": [
     {
       "src": "icon-192.png",
