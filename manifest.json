@@ -8,8 +8,9 @@
   "short_name": "C.S.S",
   "start_url": "./index.html",
   "theme_color": "#ffffff",
-  "id": "C.S.S"
-}
+  "id": "C.S.S",
+  
+  /* --- Propriedades que estavam fora --- */
   "description": "Servidor de Minecraft bedrock com addons",
   "lang": "pt",
   "display_override": [
@@ -25,5 +26,21 @@
   ],
   "categories": [
     "games"
+  ],
+
+  /* --- ADIÇÃO OBRIGATÓRIA --- */
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
