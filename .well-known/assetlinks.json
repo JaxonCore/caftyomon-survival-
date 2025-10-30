@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.jaxoncore.twa",
+        "sha256_cert_fingerprints": ["B3:02:E2:CD:6A:57:18:04:EC:B2:80:03:0E:09:38:F6:62:BA:97:85:57:AC:9C:14:00:35:DF:4F:CF:42:27:ED"]
+      }
+    }]
