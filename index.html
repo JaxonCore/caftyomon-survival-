@@ -15,8 +15,6 @@
   src: url('Minecraft.ttf') format('truetype');
 }
 
-/* ... [CSS DO FONT-FACE AQUI] ... */
-
 body {
   margin: 0;
   font-family: 'MinecraftCustom', 'Press Start 2P', cursive;
@@ -25,9 +23,7 @@ body {
   color: #fff;
   text-align: center;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  /* CORREÇÃO DO ESPAÇO: Empurra o conteúdo para baixo do cabeçalho fixo */
-  padding-top: 200px; 
+  scroll-behavior: smooth; /* Adicionei isso para a rolagem ser suave ao clicar no menu */
 }
 
 /* HEADER */
@@ -39,12 +35,10 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* CORREÇÃO: Removemos a chave '}' extra que causava o espaço */
 }
-    
 /* ... o restante do seu CSS continua aqui ... */
     
-
+}
 
 h1 {
   font-size: 22px;
@@ -285,11 +279,6 @@ footer {
 
 
 
-
-
-
-
-        
 
 
 
