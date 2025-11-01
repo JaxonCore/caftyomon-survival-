@@ -23,7 +23,7 @@ body {
   color: #fff;
   text-align: center;
   overflow-x: hidden;
-  scroll-behavior: smooth; /* Adicionei isso para a rolagem ser suave ao clicar no menu *
+  scroll-behavior: smooth; /* Adicionei isso para a rolagem ser suave ao clicar no menu */
 }
 
 /* HEADER */
@@ -35,9 +35,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-}
-/* ... o restante do seu CSS continua aqui ... */
-    
 }
 
 h1 {
@@ -164,14 +161,15 @@ footer {
 <body>
   <header>
     <button id="menu-btn">☰</button>
-        <nav id="menu-links">
+    <nav id="menu-links">
       <a href="index.html">🏠 Início</a>
       <a href="#rules-box">📜 Regras</a> 
-      <a href="#adms-box">👨‍💻 ADMs</a> <a href="#creditos">💖 Créditos</a>
+      <a href="#guia-rapido">⚙️ Como Funciona</a> <a href="#adms-box">👨‍💻 ADMs</a> 
+      <a href="#creditos">💖 Créditos</a>
     </nav> 
     
     
-    <h1>Craftymon Survival Server</h1>
+    <h1>🌿 Craftymon Survival Server 🌿</h1>
     <p>Capture monstrinhos e batalhe em um mundo survival!</p>
 
     <div class="translate-container">
@@ -183,14 +181,10 @@ footer {
     </div>
   </header>
   
-  <div style="height: 15px;"></div> 
-
-<section class="primeira-secao">
+  <div style="height: 15px;"></div> <section>
     <h2>🎮 IP e Porta</h2>
     <p><b>IP:</b> Craftymon_Survival.aternos.me</p>
     <p><b>Porta:</b> 38606</p>
-</section>
-  
     <button class="copy-btn" onclick="copyText('Craftymon_Survival.aternos.me')">Copiar IP</button>
     <button class="copy-btn" onclick="window.location.href='minecraft://?addExternalServer=Craftymon_Survival|Craftymon_Survival.aternos.me:38606'">Conectar</button>
   </section>
@@ -202,25 +196,38 @@ footer {
     <div class="player">🥉 ???</div>
   </section>
 
-  </section>
-
   <section id="adms-box">
     <h2>👨‍💻 ADMs do servidor</h2>
     <div class="player">Davizig10jojo</div>
     <div class="player">FaHerobrine</div>
     <div class="player">???</div>
   </section>
-  <section>
-    
-    
-    
-
   
   <section>
     <h2>📣 Sobre o servidor</h2>
     <p>Temos addons como o <b>Pokedrock</b> e <b>Essentials</b> (o da bússola 🧭), entre outros!</p>
   </section>
-    <section id="creditos">
+
+  <section id="guia-rapido">
+    <h2>⚙️ Guia Rápido</h2>
+
+    <div class="player">
+        <b>1. Como Funciona o Server?</b>
+        <p>O Craftymon é um servidor Survival com foco em aventura e colecionáveis. Você deve capturar os monstrinhos, batalhar com outros jogadores e explorar o mundo para sobreviver. Lembre-se de seguir as <a href="#rules-box" style="color: #00ff99; text-decoration: none;">regras</a>!</p>
+    </div>
+    
+    <div class="player">
+        <b>2. Como Entrar no Server?</b>
+        <p>Você precisa do Minecraft Bedrock Edition (celular ou PC) e usar o <b>IP e Porta</b> que estão na primeira caixa do site.</p>
+    </div>
+    
+    <div class="player">
+        <b>3. Para Que Serve Este Site?</b>
+        <p>Este site é um guia rápido e informativo para os jogadores. Aqui você encontra o IP atualizado, as regras, a lista de ADMs e os créditos do projeto. Use o menu (☰) para navegar!</p>
+    </div>
+    
+  </section>
+  <section id="creditos">
     <h2>💖 Créditos</h2>
     <p>Um agradecimento especial a quem ajudou:</p>
     <div class="player">Base do site:Gemini</div>
@@ -275,23 +282,3 @@ footer {
 <div id="google_translate_element" style="display:none;"></div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
