@@ -279,17 +279,7 @@ footer {
     
     <p id="rating-message" style="font-size: 10px; color: #00ff99; margin-top: 10px;">Clique nas estrelas para nos dar uma nota!</p>
 
-    <button class="copy-btn" onclick="  function openFeedbackForm() {
-    // 🛑 IMPORTANTE: COLOQUE AQUI O SEU LINK REAL DO GOOGLE FORMS (GRATUITO)
-    const feedbackUrl = 'https://forms.gle/exemploDeLinkParaOSeuFormulario'; // <-- AQUI!
-    
-    if (currentRating === 0) {
-      alert("Por favor, clique em uma estrela antes de deixar um comentário!");
-    } else {
-      window.open(feedbackUrl, '_blank');
-    }
-  }
-      ()">Deixe um Comentário</button>
+    <button class="copy-btn" onclick="openFeedbackForm()">Deixe um Comentário</button>
   </section>
   <footer> 
     <p>© 2025 Craftymon Survival Server | Todos os direitos reservados</p>
@@ -374,4 +364,5 @@ footer {
 <div id="google_translate_element" style="display:none;"></div>
 </body>
 </html>
+
 
