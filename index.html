@@ -16,33 +16,28 @@
 }
 
 body {
-  margin: 0px auto 25px auto; 
-  background: rgba(0,0,0,0.65);
-  border: 2px solid #00ff99;
-  border-radius: 12px;
-  padding: 20px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 0 15px rgba(0,255,150,0.3);
-  transition: transform 0.3s;
+  margin: 0;
   font-family: 'MinecraftCustom', 'Press Start 2P', cursive;
   /* NOVO FUNDO PERSONALIZADO: 'fundo.png' */
   background: url('fundo.png') center/cover no-repeat fixed;
   color: #fff;
   text-align: center;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Adicionei isso para a rolagem ser suave ao clicar no menu *
 }
 
 /* HEADER */
 header {
   background: rgba(0, 0, 0, 0.7);
-  padding: 25px 15px;
+  padding: 25px 25px;
   border-bottom: 2px solid #00ff99;
   box-shadow: 0 4px 10px rgba(0,0,0,0.6);
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+/* ... o restante do seu CSS continua aqui ... */
+    
 }
 
 h1 {
@@ -102,7 +97,7 @@ p {
 
 /* BOXES */
 section {
-  margin: 25px auto; /* Margin padrão das caixas */
+  margin: 25px auto;
   background: rgba(0,0,0,0.65);
   border: 2px solid #00ff99;
   border-radius: 12px;
@@ -112,14 +107,6 @@ section {
   box-shadow: 0 0 15px rgba(0,255,150,0.3);
   transition: transform 0.3s;
 }
-
-/* CORREÇÃO PARA A PRIMEIRA SEÇÃO */
-.primeira-secao {
-  /* Puxa a primeira caixa 50px para cima, preenchendo o espaço */
-  margin-top: -50px; 
-}
-
-
 section:hover {
   transform: scale(1.02);
 }
@@ -177,11 +164,12 @@ footer {
 <body>
   <header>
     <button id="menu-btn">☰</button>
-    <nav id="menu-links">
+        <nav id="menu-links">
       <a href="index.html">🏠 Início</a>
       <a href="#rules-box">📜 Regras</a> 
       <a href="#adms-box">👨‍💻 ADMs</a> <a href="#creditos">💖 Créditos</a>
     </nav> 
+    
     
     <h1>Craftymon Survival Server</h1>
     <p>Capture monstrinhos e batalhe em um mundo survival!</p>
@@ -194,11 +182,15 @@ footer {
       </select>
     </div>
   </header>
+  
+  <div style="height: 15px;"></div> 
 
-  <section class="primeira-secao">
+<section class="primeira-secao">
     <h2>🎮 IP e Porta</h2>
     <p><b>IP:</b> Craftymon_Survival.aternos.me</p>
     <p><b>Porta:</b> 38606</p>
+</section>
+  
     <button class="copy-btn" onclick="copyText('Craftymon_Survival.aternos.me')">Copiar IP</button>
     <button class="copy-btn" onclick="window.location.href='minecraft://?addExternalServer=Craftymon_Survival|Craftymon_Survival.aternos.me:38606'">Conectar</button>
   </section>
@@ -210,19 +202,25 @@ footer {
     <div class="player">🥉 ???</div>
   </section>
 
+  </section>
+
   <section id="adms-box">
     <h2>👨‍💻 ADMs do servidor</h2>
     <div class="player">Davizig10jojo</div>
     <div class="player">FaHerobrine</div>
     <div class="player">???</div>
   </section>
+  <section>
+    
+    
+    
+
   
   <section>
     <h2>📣 Sobre o servidor</h2>
     <p>Temos addons como o <b>Pokedrock</b> e <b>Essentials</b> (o da bússola 🧭), entre outros!</p>
   </section>
-  
-  <section id="creditos">
+    <section id="creditos">
     <h2>💖 Créditos</h2>
     <p>Um agradecimento especial a quem ajudou:</p>
     <div class="player">Base do site:Gemini</div>
@@ -277,6 +275,19 @@ footer {
 <div id="google_translate_element" style="display:none;"></div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
