@@ -23,11 +23,14 @@ body {
   color: #fff;
   text-align: center;
   overflow-x: hidden;
-  scroll-behavior: smooth; /* Adicionei isso para a rolagem ser suave ao clicar no menu */
-  top: 0px !important; /* CORREÇÃO PARA A BARRA DE TRADUÇÃO */
+  scroll-behavior: smooth; 
+  top: 0px !important; /* CORREÇÃO 1: REMOVE O ESPAÇO DEIXADO PELA BARRA DE TRADUÇÃO */
 }
 
-/* NOVO: ESCONDE A BARRA DE TRADUÇÃO DO GOOGLE */
+/* CORREÇÃO 2: ESCONDE A BARRA DE TRADUÇÃO DO GOOGLE */
+.goog-te-banner-container {
+  display: none !important;
+}
 body > .skiptranslate {
   display: none !important;
 }
@@ -253,184 +256,5 @@ footer {
     
     <div class="player">
         <b>3. Para Que Serve Este Site?</b>
-        <p>Este site é um guia rápido e informativo para os jogadores. Aqui você encontra o IP atualizado, as regras, a lista de ADMs e os créditos do projeto. Use o menu (☰) para navegar!</p>
-    </div>
-
-    <div class="player">
-      <b>4. Qual o propósito do server?</b>
-      <p>o server tem o propósito de jogar com amigos ou conhecer amigos para quem joga sozinho o server tem cada proposta inovadora, como este site como os addons como a gameplay tudo é único, como todos os servers são cada um com uma proposta diferente cada um com um estilo...</p>
-    
-  </section>
-  <section id="creditos">
-    <h2>💖 Créditos</h2>
-    <p>Um agradecimento especial a quem ajudou:</p>
-    <div class="player">Base do site:Gemini</div>
-    <div class="player">reformulou o site:RougeEdits</div>
-    <div class="player">fez modificações:Davizig10jojo (criador Da C.S.S)</div>
-  </section> 
-  
-  <section id="rules-box">
-    <h2>Diretrizes Essenciais</h2>
-    <p>Siga as regras para continuar participando no server</p>
-     <div>Não pratique spam ou floods (envio repetitivo e excessivo de mensagens).</div>
-     <div>Não utilize qualquer tipo de software ou modificação de jogo (hack) que lhe dê vantagem injusta.</div>
-     <div>Mantenha o respeito! Não humilhe, ofenda ou use linguagem de ódio contra outras pessoas, tanto no Minecraft quanto no Discord.</div>
-     <div>Siga as regras específicas do servidor do Minecraft, se houverem, além destas regras gerais.</div>
-  </section> 
-  
-  <section id="avaliar-site">
-    <h2>Avalie o Nosso Site! ⭐</h2>
-    <p>O que você achou da nossa página?</p>
-    
-    <div id="stars-container">
-      <span class="star" data-value="1">★</span>
-      <span class="star" data-value="2">★</span>
-      <span class="star" data-value="3">★</span>
-      <span class="star" data-value="4">★</span>
-      <span class="star" data-value="5">★</span>
-    </div>
-    
-    <p id="rating-message" style="font-size: 10px; color: #00ff99; margin-top: 10px;">Clique nas estrelas para nos dar uma nota!</p>
-
-    <button class="copy-btn" onclick="openFeedbackForm()">Deixe um Comentário</button>
-  </section>
-  <footer> 
-    <p>© 2025 Craftymon Survival Server | Todos os direitos reservados</p>
-  </footer>
-
-<script>
-  // --- LÓGICA DO MENU HAMBÚRGUER (CORRIGIDA) ---
-  const menuBtn = document.getElementById('menu-btn');
-  const menuLinks = document.getElementById('menu-links');
-  const closeMenuBtn = document.getElementById('close-menu-btn'); // Novo: Botão X
-  
-  // Função de Abrir/Fechar
-  function toggleMenu() {
-    menuLinks.classList.toggle('menu-active');
-    
-    // Altera a visibilidade dos botões
-    if (menuLinks.classList.contains('menu-active')) {
-      menuBtn.style.display = 'none'; // Esconde o ☰
-      closeMenuBtn.style.display = 'block'; // Mostra o X
-    } else {
-      menuBtn.style.display = 'block'; // Mostra o ☰
-      closeMenuBtn.style.display = 'none'; // Esconde o X
-    }
-  }
-
-  menuBtn.addEventListener('click', toggleMenu);
-  closeMenuBtn.addEventListener('click', toggleMenu); // Evento para o botão X
-
-  // Fecha o menu ao clicar em um link
-  menuLinks.addEventListener('click', (event) => {
-    // Garante que só feche se for um link <a> e não o botão 'X'
-    if (event.target.tagName === 'A') {
-      menuLinks.classList.remove('menu-active');
-      menuBtn.style.display = 'block'; // Garante que o ☰ volte a aparecer
-      closeMenuBtn.style.display = 'none'; // Garante que o X suma
-    }
-  });
-  
-  // Oculta o 'X' ao iniciar
-  if(closeMenuBtn) {
-    closeMenuBtn.style.display = 'none'; 
-  }
-
-
-  // --- LÓGICA DE COPIAR TEXTO ---
-  function copyText(text) {
-    navigator.clipboard.writeText(text);
-    alert("IP copiado: " + text);
-  }
-
-  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (REVISADA) ---
-  // Variável para garantir que o script de tradução seja carregado apenas uma vez
-  let isTranslateScriptLoaded = false;
-
-  // 1. Função que o Google Translate chama quando o script é carregado
-  window.googleTranslateElementInit = function() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'pt',
-      includedLanguages: 'pt,en,es',
-      // Usamos o layout SIMPLE e o div oculto
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE 
-    }, 'google_translate_element');
-    isTranslateScriptLoaded = true;
-  };
-
-  // 2. Função que lida com a mudança de idioma no seu dropdown
-  function translatePage(lang) {
-    const s = document.createElement('script');
-    s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-    document.body.appendChild(s);
-    window.googleTranslateElementInit = function() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'pt',
-        includedLanguages: 'pt,en,es',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    };
-  }
-  
-    
-    
-    // MÉTODO MAIS LIMPO PARA CUSTOM SELECT: FORÇAR A TRADUÇÃO VIA COOKIE.
-    // O Google Translate lê este cookie para aplicar a tradução ao carregar.
-    // A estrutura do cookie é /idioma_original/idioma_alvo
-    const targetCookie = `/pt/${lang}`;
-    document.cookie = `googtrans=${targetCookie}; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/`;
-
-    // Recarrega a página para aplicar a nova tradução
-    window.location.reload();
-  }
-
-  // LÓGICA DO SISTEMA DE AVALIAÇÃO (MANTIDA)
-  const stars = document.querySelectorAll('.star');
-  const ratingMessage = document.getElementById('rating-message');
-  let currentRating = 0;
-
-  stars.forEach(star => {
-    star.addEventListener('click', function() {
-      const value = parseInt(this.getAttribute('data-value'));
-      currentRating = value;
-      updateStars(value);
-      ratingMessage.textContent = `Obrigado! Sua nota: ${value} estrelas. Clique abaixo para comentar.`;
-    });
-
-    star.addEventListener('mouseover', function() {
-      const value = parseInt(this.getAttribute('data-value'));
-      updateStars(value, true); // Acende ao passar o mouse
-    });
-
-    star.addEventListener('mouseout', function() {
-      updateStars(currentRating); // Volta para a nota atual
-    });
-  });
-
-  function updateStars(value, isHover = false) {
-    stars.forEach(star => {
-      const starValue = parseInt(star.getAttribute('data-value'));
-      if (starValue <= value) {
-        star.classList.add('active');
-      } else {
-        star.classList.remove('active');
-      }
-    });
-  }
-
-  function openFeedbackForm() {
-    // 🛑 IMPORTANTE: SUBSTITUA ESTE LINK PELO SEU GOOGLE FORMS OU FORMULÁRIO DE FEEDBACK REAL
-    const feedbackUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSemRoNthViCcRUszC4IA9z2OwTenyi8PGW_m_5vNRVqjWbT_g/viewform'; 
-    
-    if (currentRating === 0) {
-      alert("Por favor, clique em uma estrela antes de deixar um comentário!");
-    } else {
-      window.open(feedbackUrl, '_blank');
-    }
-  }
-</script>
-
-<div id="google_translate_element" style="display:none;"></div>
-</body>
-</html>
-
+        <p>Este site é um guia rápido e informativo para os jogadores. Aqui você encontra o IP atualizado, as regras, a lista de ADMs e os créditos do
+          
