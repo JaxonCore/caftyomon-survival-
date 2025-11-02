@@ -24,6 +24,12 @@ body {
   text-align: center;
   overflow-x: hidden;
   scroll-behavior: smooth; /* Adicionei isso para a rolagem ser suave ao clicar no menu */
+  top: 0px !important; /* CORREÇÃO PARA A BARRA DE TRADUÇÃO */
+}
+
+/* NOVO: ESCONDE A BARRA DE TRADUÇÃO DO GOOGLE */
+body > .skiptranslate {
+  display: none !important;
 }
 
 /* HEADER */
@@ -293,36 +299,85 @@ footer {
   </footer>
 
 <script>
-  
+  // --- LÓGICA DO MENU HAMBÚRGUER (CORRIGIDA) ---
   const menuBtn = document.getElementById('menu-btn');
   const menuLinks = document.getElementById('menu-links');
+  const closeMenuBtn = document.getElementById('close-menu-btn'); // Novo: Botão X
   
-  menuBtn.addEventListener('click', () => menuLinks.classList.toggle('menu-active'));
+  // Função de Abrir/Fechar
+  function toggleMenu() {
+    menuLinks.classList.toggle('menu-active');
+    
+    // Altera a visibilidade dos botões
+    if (menuLinks.classList.contains('menu-active')) {
+      menuBtn.style.display = 'none'; // Esconde o ☰
+      closeMenuBtn.style.display = 'block'; // Mostra o X
+    } else {
+      menuBtn.style.display = 'block'; // Mostra o ☰
+      closeMenuBtn.style.display = 'none'; // Esconde o X
+    }
+  }
 
-  // Adiciona um listener para fechar o menu ao clicar em um link
-  menuLinks.addEventListener('click', () => {
-    menuLinks.classList.remove('menu-active');
+  menuBtn.addEventListener('click', toggleMenu);
+  closeMenuBtn.addEventListener('click', toggleMenu); // Evento para o botão X
+
+  // Fecha o menu ao clicar em um link
+  menuLinks.addEventListener('click', (event) => {
+    // Garante que só feche se for um link <a> e não o botão 'X'
+    if (event.target.tagName === 'A') {
+      menuLinks.classList.remove('menu-active');
+      menuBtn.style.display = 'block'; // Garante que o ☰ volte a aparecer
+      closeMenuBtn.style.display = 'none'; // Garante que o X suma
+    }
   });
+  
+  // Oculta o 'X' ao iniciar
+  if(closeMenuBtn) {
+    closeMenuBtn.style.display = 'none'; 
+  }
 
+
+  // --- LÓGICA DE COPIAR TEXTO ---
   function copyText(text) {
     navigator.clipboard.writeText(text);
     alert("IP copiado: " + text);
   }
 
+  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (REVISADA) ---
+  // Variável para garantir que o script de tradução seja carregado apenas uma vez
+  let isTranslateScriptLoaded = false;
+
+  // 1. Função que o Google Translate chama quando o script é carregado
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'pt',
+      includedLanguages: 'pt,en,es',
+      // Usamos o layout SIMPLE e o div oculto
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE 
+    }, 'google_translate_element');
+    isTranslateScriptLoaded = true;
+  };
+
+  // 2. Função que lida com a mudança de idioma no seu dropdown
   function translatePage(lang) {
-    const s = document.createElement('script');
-    s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-    document.body.appendChild(s);
-    window.googleTranslateElementInit = function() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'pt',
-        includedLanguages: 'pt,en,es',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    };
+    // Carrega o script do Google Translate se ainda não foi carregado
+    if (!isTranslateScriptLoaded) {
+      const s = document.createElement('script');
+      s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+      document.body.appendChild(s);
+    }
+    
+    // MÉTODO MAIS LIMPO PARA CUSTOM SELECT: FORÇAR A TRADUÇÃO VIA COOKIE.
+    // O Google Translate lê este cookie para aplicar a tradução ao carregar.
+    // A estrutura do cookie é /idioma_original/idioma_alvo
+    const targetCookie = `/pt/${lang}`;
+    document.cookie = `googtrans=${targetCookie}; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/`;
+
+    // Recarrega a página para aplicar a nova tradução
+    window.location.reload();
   }
 
-  // LÓGICA DO SISTEMA DE AVALIAÇÃO
+  // LÓGICA DO SISTEMA DE AVALIAÇÃO (MANTIDA)
   const stars = document.querySelectorAll('.star');
   const ratingMessage = document.getElementById('rating-message');
   let currentRating = 0;
@@ -371,9 +426,3 @@ footer {
 <div id="google_translate_element" style="display:none;"></div>
 </body>
 </html>
-
-
-
-
-
-
