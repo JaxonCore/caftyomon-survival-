@@ -211,127 +211,6 @@ footer {
       </select>
     </div>
   </header>
-  <script>
-  // --- LÓGICA DO MENU HAMBÚRGUER (MANTIDA) ---
-  const menuBtn = document.getElementById('menu-btn');
-  const menuLinks = document.getElementById('menu-links');
-  const closeMenuBtn = document.getElementById('close-menu-btn'); 
-  
-  function toggleMenu() {
-    menuLinks.classList.toggle('menu-active');
-    
-    if (menuLinks.classList.contains('menu-active')) {
-      menuBtn.style.display = 'none'; 
-      closeMenuBtn.style.display = 'block'; 
-    } else {
-      menuBtn.style.display = 'block'; 
-      closeMenuBtn.style.display = 'none'; 
-    }
-  }
-
-  menuBtn.addEventListener('click', toggleMenu);
-  closeMenuBtn.addEventListener('click', toggleMenu); 
-
-  menuLinks.addEventListener('click', (event) => {
-    if (event.target.tagName === 'A') {
-      menuLinks.classList.remove('menu-active');
-      menuBtn.style.display = 'block'; 
-      closeMenuBtn.style.display = 'none'; 
-    }
-  });
-  
-  if(closeMenuBtn) {
-    closeMenuBtn.style.display = 'none'; 
-  }
-
-
-  // --- LÓGICA DE COPIAR TEXTO (MANTIDA) ---
-  function copyText(text) {
-    navigator.clipboard.writeText(text);
-    alert("IP copiado: " + text);
-  }
-
-  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (CORREÇÃO FINAL) ---
-  let isTranslateScriptLoaded = false;
-
-  window.googleTranslateElementInit = function() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'pt',
-      includedLanguages: 'pt,en,es',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE 
-    }, 'google_translate_element');
-    isTranslateScriptLoaded = true;
-  };
-
-  function translatePage(lang) {
-    // 1. Carrega o script se ainda não estiver lá
-    if (!isTranslateScriptLoaded) {
-      const s = document.createElement('script');
-      s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-      document.body.appendChild(s);
-    }
-    
-    // 2. CORREÇÃO ROBUSTA DO COOKIE
-    // Define o cookie 'googtrans' com Path=/ e uma data de expiração distante
-    const expirationDate = new Date();
-    expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Expira em 1 ano
-
-    const targetCookie = `/pt/${lang}`;
-    document.cookie = `googtrans=${targetCookie}; expires=${expirationDate.toUTCString()}; path=/`;
-
-    // 3. Recarrega a página para aplicar a tradução imediatamente
-    window.location.reload();
-  }
-  
-  // --- LÓGICA DO SISTEMA DE AVALIAÇÃO (MANTIDA) ---
-  const stars = document.querySelectorAll('.star');
-  const ratingMessage = document.getElementById('rating-message');
-  let currentRating = 0;
-
-  stars.forEach(star => {
-    star.addEventListener('click', function() {
-      const value = parseInt(this.getAttribute('data-value'));
-      currentRating = value;
-      updateStars(value);
-      ratingMessage.textContent = `Obrigado! Sua nota: ${value} estrelas. Clique abaixo para comentar.`;
-    });
-
-    star.addEventListener('mouseover', function() {
-      const value = parseInt(this.getAttribute('data-value'));
-      updateStars(value, true); 
-    });
-
-    star.addEventListener('mouseout', function() {
-      updateStars(currentRating); 
-    });
-  });
-
-  function updateStars(value, isHover = false) {
-    stars.forEach(star => {
-      const starValue = parseInt(star.getAttribute('data-value'));
-      if (starValue <= value) {
-        star.classList.add('active');
-      } else {
-        star.classList.remove('active');
-      }
-    });
-  }
-
-  function openFeedbackForm() {
-    const feedbackUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSemRoNthViCcRUszC4IA9z2OwTenyi8PGW_m_5vNRVqjWbT_g/viewform'; 
-    
-    if (currentRating === 0) {
-      alert("Por favor, clique em uma estrela antes de deixar um comentário!");
-    } else {
-      window.open(feedbackUrl, '_blank');
-    }
-  }
-</script>
-
-<div id="google_translate_element" style="display:none;"></div>
-</body>
-</html>
-
   
   <div style="height: 15px;"></div> 
   
@@ -421,129 +300,7 @@ footer {
   <footer> 
     <p>© 2025 Craftymon Survival Server | Todos os direitos reservados</p>
   </footer>
-<script>
-  // --- LÓGICA DO MENU HAMBÚRGUER (MANTIDA) ---
-  const menuBtn = document.getElementById('menu-btn');
-  const menuLinks = document.getElementById('menu-links');
-  const closeMenuBtn = document.getElementById('close-menu-btn'); 
-  
-  function toggleMenu() {
-    menuLinks.classList.toggle('menu-active');
-    
-    if (menuLinks.classList.contains('menu-active')) {
-      menuBtn.style.display = 'none'; 
-      closeMenuBtn.style.display = 'block'; 
-    } else {
-      menuBtn.style.display = 'block'; 
-      closeMenuBtn.style.display = 'none'; 
-    }
-  }
 
-  menuBtn.addEventListener('click', toggleMenu);
-  closeMenuBtn.addEventListener('click', toggleMenu); 
-
-  menuLinks.addEventListener('click', (event) => {
-    if (event.target.tagName === 'A') {
-      menuLinks.classList.remove('menu-active');
-      menuBtn.style.display = 'block'; 
-      closeMenuBtn.style.display = 'none'; 
-    }
-  });
-  
-  if(closeMenuBtn) {
-    closeMenuBtn.style.display = 'none'; 
-  }
-
-
-  // --- LÓGICA DE COPIAR TEXTO (MANTIDA) ---
-  function copyText(text) {
-    navigator.clipboard.writeText(text);
-    alert("IP copiado: " + text);
-  }
-
-  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (CORREÇÃO FINAL) ---
-  let isTranslateScriptLoaded = false;
-
-  window.googleTranslateElementInit = function() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'pt',
-      includedLanguages: 'pt,en,es',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE 
-    }, 'google_translate_element');
-    isTranslateScriptLoaded = true;
-  };
-
-  function translatePage(lang) {
-    // 1. Carrega o script se ainda não estiver lá
-    if (!isTranslateScriptLoaded) {
-      const s = document.createElement('script');
-      s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-      document.body.appendChild(s);
-    }
-    
-    // 2. CORREÇÃO ROBUSTA DO COOKIE
-    // Define o cookie 'googtrans' com Path=/ e uma data de expiração distante
-    const expirationDate = new Date();
-    expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Expira em 1 ano
-
-    const targetCookie = `/pt/${lang}`;
-    document.cookie = `googtrans=${targetCookie}; expires=${expirationDate.toUTCString()}; path=/`;
-
-    // 3. Recarrega a página para aplicar a tradução imediatamente
-    window.location.reload();
-  }
-  
-  // --- LÓGICA DO SISTEMA DE AVALIAÇÃO (MANTIDA) ---
-  const stars = document.querySelectorAll('.star');
-  const ratingMessage = document.getElementById('rating-message');
-  let currentRating = 0;
-
-  stars.forEach(star => {
-    star.addEventListener('click', function() {
-      const value = parseInt(this.getAttribute('data-value'));
-      currentRating = value;
-      updateStars(value);
-      ratingMessage.textContent = `Obrigado! Sua nota: ${value} estrelas. Clique abaixo para comentar.`;
-    });
-
-    star.addEventListener('mouseover', function() {
-      const value = parseInt(this.getAttribute('data-value'));
-      updateStars(value, true); 
-    });
-
-    star.addEventListener('mouseout', function() {
-      updateStars(currentRating); 
-    });
-  });
-
-  function updateStars(value, isHover = false) {
-    stars.forEach(star => {
-      const starValue = parseInt(star.getAttribute('data-value'));
-      if (starValue <= value) {
-        star.classList.add('active');
-      } else {
-        star.classList.remove('active');
-      }
-    });
-  }
-
-  function openFeedbackForm() {
-    const feedbackUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSemRoNthViCcRUszC4IA9z2OwTenyi8PGW_m_5vNRVqjWbT_g/viewform'; 
-    
-    if (currentRating === 0) {
-      alert("Por favor, clique em uma estrela antes de deixar um comentário!");
-    } else {
-      window.open(feedbackUrl, '_blank');
-    }
-  }
-</script>
-
-<div id="google_translate_element" style="display:none;"></div>
-</body>
-</html>
-
-
-  
 <script>
   // --- LÓGICA DO MENU HAMBÚRGUER (CORRIGIDA) ---
   const menuBtn = document.getElementById('menu-btn');
@@ -589,7 +346,7 @@ footer {
     alert("IP copiado: " + text);
   }
 
-  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (CORRIGIDA) ---
+  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (CORREÇÃO FINAL ROBUSTA) ---
   // Variável para garantir que o script de tradução seja carregado apenas uma vez
   let isTranslateScriptLoaded = false;
 
@@ -612,16 +369,19 @@ footer {
       document.body.appendChild(s);
     }
     
-    // CORREÇÃO: Define o cookie para forçar o Google Translate a aplicar a tradução
-    // O cookie usa o formato /idioma_original/idioma_alvo
+    // CORREÇÃO: Define o cookie de forma robusta para forçar a tradução persistente
+    const expirationDate = new Date();
+    expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Expira em 1 ano
+
     const targetCookie = `/pt/${lang}`;
-    document.cookie = `googtrans=${targetCookie}; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/`;
+    // Define o cookie com Path=/ (raiz do site) e expiração longa
+    document.cookie = `googtrans=${targetCookie}; expires=${expirationDate.toUTCString()}; path=/`;
 
     // Recarrega a página para aplicar a nova tradução
     window.location.reload();
   }
 
-  // LÓGICA DO SISTEMA DE AVALIAÇÃO (MANTIDA)
+  // --- LÓGICA DO SISTEMA DE AVALIAÇÃO (MANTIDA) ---
   const stars = document.querySelectorAll('.star');
   const ratingMessage = document.getElementById('rating-message');
   let currentRating = 0;
@@ -636,11 +396,11 @@ footer {
 
     star.addEventListener('mouseover', function() {
       const value = parseInt(this.getAttribute('data-value'));
-      updateStars(value, true); // Acende ao passar o mouse
+      updateStars(value, true); 
     });
 
     star.addEventListener('mouseout', function() {
-      updateStars(currentRating); // Volta para a nota atual
+      updateStars(currentRating); 
     });
   });
 
@@ -656,7 +416,7 @@ footer {
   }
 
   function openFeedbackForm() {
-    // 🛑 IMPORTANTE: SUBSTITUA ESTE LINK PELO SEU GOOGLE FORMS OU FORMULÁRIO DE FEEDBACK REAL
+    // 🛑 SUBSTITUA ESTE LINK PELO SEU GOOGLE FORMS OU FORMULÁRIO DE FEEDBACK REAL
     const feedbackUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSemRoNthViCcRUszC4IA9z2OwTenyi8PGW_m_5vNRVqjWbT_g/viewform'; 
     
     if (currentRating === 0) {
@@ -670,5 +430,3 @@ footer {
 <div id="google_translate_element" style="display:none;"></div>
 </body>
 </html>
-
-
