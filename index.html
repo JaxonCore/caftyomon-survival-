@@ -302,31 +302,27 @@ footer {
   </footer>
 
 <script>
-  // --- LÓGICA DO MENU HAMBÚRGUER (CORRIGIDA) ---
+  // --- LÓGICA DO MENU HAMBÚRGUER ---
   const menuBtn = document.getElementById('menu-btn');
   const menuLinks = document.getElementById('menu-links');
   const closeMenuBtn = document.getElementById('close-menu-btn'); 
   
-  // Função de Abrir/Fechar
   function toggleMenu() {
     menuLinks.classList.toggle('menu-active');
     
-    // Altera a visibilidade dos botões
     if (menuLinks.classList.contains('menu-active')) {
-      menuBtn.style.display = 'none'; // Esconde o ☰
-      closeMenuBtn.style.display = 'block'; // Mostra o X
+      menuBtn.style.display = 'none'; 
+      closeMenuBtn.style.display = 'block'; 
     } else {
-      menuBtn.style.display = 'block'; // Mostra o ☰
-      closeMenuBtn.style.display = 'none'; // Esconde o X
+      menuBtn.style.display = 'block'; 
+      closeMenuBtn.style.display = 'none'; 
     }
   }
 
   menuBtn.addEventListener('click', toggleMenu);
   closeMenuBtn.addEventListener('click', toggleMenu); 
 
-  // Fecha o menu ao clicar em um link
   menuLinks.addEventListener('click', (event) => {
-    // Garante que só feche se for um link <a>
     if (event.target.tagName === 'A') {
       menuLinks.classList.remove('menu-active');
       menuBtn.style.display = 'block'; 
@@ -334,23 +330,23 @@ footer {
     }
   });
   
-  // Oculta o 'X' ao iniciar
   if(closeMenuBtn) {
     closeMenuBtn.style.display = 'none'; 
   }
 
 
-  // --- LÓGICA DE COPIAR TEXTO (MANTIDA) ---
+  // --- LÓGICA DE COPIAR TEXTO ---
   function copyText(text) {
     navigator.clipboard.writeText(text);
     alert("IP copiado: " + text);
   }
 
-  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (CORREÇÃO FINAL ROBUSTA) ---
-  // Variável para garantir que o script de tradução seja carregado apenas uma vez
+  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (TENTATIVA FINAL DE CORREÇÃO) ---
+  
+  // 1. Variável para garantir que o script de tradução seja carregado apenas uma vez
   let isTranslateScriptLoaded = false;
 
-  // 1. Função que o Google Translate chama quando o script é carregado
+  // 2. Função que o Google Translate chama
   window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
       pageLanguage: 'pt',
@@ -360,28 +356,41 @@ footer {
     isTranslateScriptLoaded = true;
   };
 
-  // 2. Função que lida com a mudança de idioma no seu dropdown
+  // 3. Função que lida com a mudança de idioma no seu dropdown
   function translatePage(lang) {
-    // Carrega o script do Google Translate se ainda não foi carregado
-    if (!isTranslateScriptLoaded) {
-      const s = document.createElement('script');
-      s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-      document.body.appendChild(s);
-    }
-    
-    // CORREÇÃO: Define o cookie de forma robusta para forçar a tradução persistente
-    const expirationDate = new Date();
-    expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Expira em 1 ano
-
-    const targetCookie = `/pt/${lang}`;
-    // Define o cookie com Path=/ (raiz do site) e expiração longa
-    document.cookie = `googtrans=${targetCookie}; expires=${expirationDate.toUTCString()}; path=/`;
+    // CORREÇÃO FINAL: Usamos a forma mais simples do cookie. 
+    // Em alguns ambientes (como o Aternos), adicionar 'expires' e 'path' pode causar bloqueio.
+    document.cookie = `googtrans=/pt/${lang}`;
 
     // Recarrega a página para aplicar a nova tradução
     window.location.reload();
   }
 
-  // --- LÓGICA DO SISTEMA DE AVALIAÇÃO (MANTIDA) ---
+  // 4. Correção para garantir que o idioma selecionado permaneça no dropdown após a recarga
+  document.addEventListener('DOMContentLoaded', () => {
+      // Carrega o script do Google Translate imediatamente no DOMContentLoaded
+      if (!isTranslateScriptLoaded) {
+          const s = document.createElement('script');
+          s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+          document.body.appendChild(s);
+      }
+      
+      // Tenta ler o cookie 'googtrans'
+      const cookieMatch = document.cookie.match(/googtrans=(\/[a-z]{2}\/[a-z]{2})/i);
+      const selectElement = document.getElementById('languageSelect');
+
+      if (selectElement && cookieMatch) {
+          // Extrai o código do idioma alvo (ex: /pt/en -> 'en')
+          const targetLang = cookieMatch[1].split('/')[2]; 
+          
+          // Seta o valor do dropdown para o idioma correto
+          if (targetLang) {
+              selectElement.value = targetLang;
+          }
+      }
+  });
+  
+  // --- LÓGICA DO SISTEMA DE AVALIAÇÃO ---
   const stars = document.querySelectorAll('.star');
   const ratingMessage = document.getElementById('rating-message');
   let currentRating = 0;
@@ -416,7 +425,6 @@ footer {
   }
 
   function openFeedbackForm() {
-    // 🛑 SUBSTITUA ESTE LINK PELO SEU GOOGLE FORMS OU FORMULÁRIO DE FEEDBACK REAL
     const feedbackUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSemRoNthViCcRUszC4IA9z2OwTenyi8PGW_m_5vNRVqjWbT_g/viewform'; 
     
     if (currentRating === 0) {
