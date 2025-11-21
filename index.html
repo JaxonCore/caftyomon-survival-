@@ -8,6 +8,8 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+  
   <style>
     /* CORREÇÃO CRÍTICA DO GOOGLE TRANSLATE: 
        A barra de tradução e o seletor auxiliar são escondidos imediatamente. */
@@ -19,13 +21,14 @@
         visibility: hidden !important;
     }
 
-    /* REMOVIDO: O bloco @font-face('Minecraft.ttf') foi removido daqui */
+    /* REMOVEMOS O BLOCO @font-face('Minecraft.ttf') para resolver o erro de carregamento */
 
 body {
   margin: 0;
-  /* MUDANÇA CRÍTICA: Usando uma fonte padrão do sistema para evitar erros de carregamento */
-  font-family: 'Arial', sans-serif; 
-  /* NOVO FUNDO PERSONALIZADO: 'fundo.png' */
+  /* MUDANÇA CRÍTICA: Usando a fonte segura do Google Fonts como principal */
+  font-family: 'Press Start 2P', 'Arial', sans-serif; 
+  
+  /* FUNDO: O nome 'fundo.png' deve estar EXATAMENTE como no repositório */
   background: url('fundo.png') center/cover no-repeat fixed;
   color: #fff;
   text-align: center;
@@ -156,7 +159,7 @@ select {
   border: 2px solid #fff;
   border-radius: 6px;
   padding: 5px 10px;
-  font-family: 'Arial', sans-serif; /* Usando fonte padrão */
+  font-family: 'Press Start 2P', 'Arial', sans-serif;
 }
 
 /* FOOTER */
