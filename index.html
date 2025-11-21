@@ -9,6 +9,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <style>
+    /* CORREÇÃO CRÍTICA DO GOOGLE TRANSLATE: 
+       A barra de tradução e o seletor auxiliar são escondidos imediatamente. */
+    .goog-te-banner-container,
+    body > .skiptranslate,
+    .goog-tooltip, 
+    .goog-tooltip:hover {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
     @font-face {
       
   font-family: 'MinecraftCustom';
@@ -24,23 +34,10 @@ body {
   text-align: center;
   overflow-x: hidden;
   scroll-behavior: smooth; 
-  /* Mantemos o top: 0px apenas como segurança */
+  /* Regra final para forçar o topo da página, ignorando a barra. */
   top: 0px !important; 
 }
 
-/* REDUZIMOS O CSS DE OCULTAÇÃO AQUI, 
-   POIS A REGRA CRÍTICA FOI PARA O <body> ABAIXO.
-*/
-.goog-te-banner-container {
-  display: none !important;
-}
-body > .skiptranslate {
-  display: none !important;
-}
-.goog-tooltip, .goog-tooltip:hover {
-    display: none !important;
-    visibility: hidden !important;
-}
 
 /* HEADER */
 header {
@@ -192,7 +189,7 @@ footer {
 </style>
 </head>
 
-<body style="top: 0px !important;">
+<body style="top: 0px !important;"> 
 <header>
     <button id="menu-btn">☰</button>
     <nav id="menu-links">
@@ -348,12 +345,9 @@ footer {
     alert("IP copiado: " + text);
   }
 
-  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (CORREÇÃO DE FLASH) ---
-  
-  // 1. Variável para garantir que o script de tradução seja carregado apenas uma vez
+  // --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE ---
   let isTranslateScriptLoaded = false;
 
-  // 2. Função que o Google Translate chama
   window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
       pageLanguage: 'pt',
@@ -363,7 +357,6 @@ footer {
     isTranslateScriptLoaded = true;
   };
 
-  // 3. Função que lida com a mudança de idioma no seu dropdown
   function translatePage(lang) {
     // Definimos o cookie de forma simples
     document.cookie = `googtrans=/pt/${lang}`;
@@ -372,16 +365,15 @@ footer {
     window.location.reload();
   }
 
-  // 4. Correção para garantir que o idioma selecionado permaneça no dropdown após a recarga
   document.addEventListener('DOMContentLoaded', () => {
-      // Carrega o script do Google Translate imediatamente no DOMContentLoaded
+      // Carrega o script do Google Translate
       if (!isTranslateScriptLoaded) {
           const s = document.createElement('script');
           s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
           document.body.appendChild(s);
       }
       
-      // Tenta ler o cookie 'googtrans'
+      // Tenta ler o cookie 'googtrans' para manter o idioma selecionado
       const cookieMatch = document.cookie.match(/googtrans=(\/[a-z]{2}\/[a-z]{2})/i);
       const selectElement = document.getElementById('languageSelect');
 
