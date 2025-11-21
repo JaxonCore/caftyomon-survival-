@@ -389,6 +389,75 @@ footer {
           }
       }
   });
+
+    /* CORREÇÃO CRÍTICA: ESCONDE A BARRA DE TRADUÇÃO DO GOOGLE IMEDIATAMENTE */
+  .goog-te-banner-container,
+  body > .skiptranslate,
+  .goog-tooltip,
+  .goog-tooltip:hover {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  body {
+    top: 0px !important; 
+    /* Garante que o body não seja empurrado para baixo */
+  }
+
+  @font-face {
+    /* ... (Mantenha o resto do seu @font-face) ... */
+    
+  
+// --- LÓGICA DO SISTEMA DE TRADUÇÃO DO GOOGLE (CORREÇÃO DE FLASH) ---
+  
+  // 1. Variável para garantir que o script de tradução seja carregado apenas uma vez
+  let isTranslateScriptLoaded = false;
+
+  // 2. Função que o Google Translate chama
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'pt',
+      includedLanguages: 'pt,en,es',
+      // Layout INLINE_SIMPLE ainda permite a tradução sem o box de seleção na tela
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE 
+    }, 'google_translate_element');
+    isTranslateScriptLoaded = true;
+  };
+
+  // 3. Função que lida com a mudança de idioma no seu dropdown
+  function translatePage(lang) {
+    // Definimos o cookie de forma simples
+    document.cookie = `googtrans=/pt/${lang}`;
+
+    // Recarrega a página para aplicar a nova tradução
+    window.location.reload();
+  }
+
+  // 4. Correção para garantir que o idioma selecionado permaneça no dropdown após a recarga
+  // E também para carregar o script com um pequeno atraso para o CSS ser aplicado.
+  document.addEventListener('DOMContentLoaded', () => {
+      // Pequeno atraso para garantir que o CSS de ocultação seja processado
+      setTimeout(() => {
+          if (!isTranslateScriptLoaded) {
+              const s = document.createElement('script');
+              s.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+              document.body.appendChild(s);
+          }
+      }, 100); // 100 milissegundos é um atraso imperceptível, mas que ajuda o navegador.
+      
+      // Tenta ler o cookie 'googtrans'
+      const cookieMatch = document.cookie.match(/googtrans=(\/[a-z]{2}\/[a-z]{2})/i);
+      const selectElement = document.getElementById('languageSelect');
+
+      if (selectElement && cookieMatch) {
+          // Extrai o código do idioma alvo (ex: /pt/en -> 'en')
+          const targetLang = cookieMatch[1].split('/')[2]; 
+          
+          // Seta o valor do dropdown para o idioma correto
+          if (targetLang) {
+              selectElement.value = targetLang;
+          }
+      }
+  });
   
   // --- LÓGICA DO SISTEMA DE AVALIAÇÃO ---
   const stars = document.querySelectorAll('.star');
