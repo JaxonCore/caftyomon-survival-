@@ -19,15 +19,12 @@
         visibility: hidden !important;
     }
 
-    @font-face {
-      
-  font-family: 'MinecraftCustom';
-  src: url('Minecraft.ttf') format('truetype');
-}
+    /* REMOVIDO: O bloco @font-face('Minecraft.ttf') foi removido daqui */
 
 body {
   margin: 0;
-  font-family: 'MinecraftCustom', 'Press Start 2P', cursive;
+  /* MUDANÇA CRÍTICA: Usando uma fonte padrão do sistema para evitar erros de carregamento */
+  font-family: 'Arial', sans-serif; 
   /* NOVO FUNDO PERSONALIZADO: 'fundo.png' */
   background: url('fundo.png') center/cover no-repeat fixed;
   color: #fff;
@@ -159,7 +156,7 @@ select {
   border: 2px solid #fff;
   border-radius: 6px;
   padding: 5px 10px;
-  font-family: 'MinecraftCustom';
+  font-family: 'Arial', sans-serif; /* Usando fonte padrão */
 }
 
 /* FOOTER */
